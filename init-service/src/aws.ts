@@ -23,6 +23,7 @@ export async function copyS3Folder(sourcePrefix: string, destinationPrefix: stri
         
         // Copy each object to the new location
         // We're doing it parallely here, using promise.all()
+
         await Promise.all(listedObjects.Contents.map(async (object) => {
             if (!object.Key) return;
             let destinationKey = object.Key.replace(sourcePrefix, destinationPrefix);
@@ -39,6 +40,7 @@ export async function copyS3Folder(sourcePrefix: string, destinationPrefix: stri
         }));
 
         // Check if the list was truncated and continue copying if necessary
+        
         if (listedObjects.IsTruncated) {
             listParams.ContinuationToken = listedObjects.NextContinuationToken;
             await copyS3Folder(sourcePrefix, destinationPrefix, continuationToken);
