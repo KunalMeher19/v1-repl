@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo,  } from "react";
 import Sidebar from "./external/editor/components/sidebar";
 import { Code } from "./external/editor/editor/code";
 import styled from "@emotion/styled";
